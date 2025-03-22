@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_content %}
+<div class="col-xxl-12 cus-z1">
+    <div class="d-center justify-content-between gap-2 gap-md-3 mb-5 mb-md-8">
+        <p class="n15-color fs-seven">Showing 24 of 150 Results</p>
+        <div class="end-area d-center gap-4 gap-md-7">
+            <div class="sort-by d-center gap-2 gap-md-3">
+                <span class="n15-color d-none d-sm-flex">Sort By :</span>
+                <div class="input-area n1-bg-color rounded-pill cus-border border b-seventh transition">
+                    <div class="w-auto single-select w-100 position-relative px-4 px-md-6 py-3 py-md-3">
+                        <select class="select-two">
+                            <option value="0">Newest</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                            <option value="5">Option 5</option>
+                            <option value="6">Option 6</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 p-lg-8 cus-border border b-seventh rounded-2">
+        <div class="row cus-row categories-style gy-5 gy-md-8 d-flex d-xxl-grid">
+            {% for item in categories %}
+                <div class="col-6 col-sm-6 col-md-4 col-xl-3">
+                    <a href="{% url 'categoty_list_place' item %}" class="single-box transition d-center justify-content-start gap-3 gap-md-4">
+                        <div class="d-center icon-area box-four rounded-circle">
+                            <img class="max-un" src="{% static '' %}images/icon/categories-style-icon-25.png" alt="Image"> 
+                        </div>
+                        <div class="text-area">
+                            <span class="n17-color fs-six fw-mid title">{{item}}</span>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="d-center">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4 mt-md-8">
+            <ul class="pagination gap-2 gap-md-3 justify-content-center align-items-center">
+                <li class="page-item">
+                    <a class="page-link rounded-circle transition d-center previous" href="javascript:void(0)" aria-label="Previous">
+                        <span class="d-center bg-transparent fs-five">
+                            <i class="ph ph-caret-left"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">1</a></li>
+                <li class="page-item active"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">2</a></li>
+                <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">3</a></li>
+                <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">...</a></li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle transition d-center next" href="javascript:void(0)" aria-label="Next">
+                        <span class="d-center bg-transparent fs-five">
+                            <i class="ph ph-caret-right"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock main_content %}

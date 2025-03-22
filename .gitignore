@@ -1,0 +1,10 @@
+.venv
+migrations
+ThemeForest
+__pycache__
+*.csv
+*.xlsx
+*.zip
+*.rar
+googlemaps/datawizard
+.env
