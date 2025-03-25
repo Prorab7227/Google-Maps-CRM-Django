@@ -12,11 +12,14 @@
     <!-- #description -->
     <meta name="description" content="Couponly - Affiliate & Submitting Discounts Coupons HTML Template">
     <!-- #title -->
-    <title>Couponly - Affiliate & Submitting Discounts Coupons HTML Template</title>
+    <title>Google Maps CRM</title>
     <!-- #favicon -->
     <link rel="shortcut icon" href="{% static 'images/fav.png' %}" type="image/x-icon">
     <!-- ==== css dependencies start ==== -->
     <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+
+    {% block import_css %}
+    {% endblock import_css %}
 </head>
 
 <body>
@@ -499,7 +502,7 @@
 
     <!-- Section Sidebar start-->
     <div class="section-sidebar pb-10">
-        <div class="container mt-5">
+        <div class="mx-20 mt-5">
             <div class="row">
                 {% block main_content %}
                 
@@ -508,151 +511,14 @@
         </div>
     </div>
     <!-- Section Sidebar end -->
-    
-    {% comment %} <!-- Footer Area Start -->
-    <footer class="footer-section n1-bg-color position-relative cmn-before full-width half-height mb-2 mb-md-3 cus-z0 d-center">
-        <div class="abs-area footer-illus">
-            <div class="single-img position-absolute start-0 bottom-0 m-8">
-                <img src="{% static '' %}images/footer-illus.png" alt="Image">
-            </div>
-        </div>
-        <div class="container">
-            <div class="row cus-row gy-10 gy-xl-0 pt-10 pb-5">
-                <div class="col-md-5 col-xl-3 col-sm-6 pe-0 pe-xxl-16">
-                    <a href="index.html">
-                        <img src="{% static '' %}images/logo.png" class="logo" alt="logo">
-                    </a>
-                    <p class="mt-4 mt-md-6 mb-6 mb-md-10">Couponly could be a platform that helps users find the best deals, discounts.</p>
-                    <ul class="d-center justify-content-start gap-3 social-area">
-                        <li>
-                            <a href="https://www.facebook.com" aria-label="Facebook" class="d-center rounded-circle cus-border border b-sixteen transition">
-                                <span class="d-center transition fs-five">
-                                    <i class="ph ph-facebook-logo"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com" aria-label="Twitter" class="d-center rounded-circle cus-border border b-sixteen transition">
-                                <span class="d-center transition fs-five">
-                                    <i class="ph ph-twitter-logo"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.pinterest.com" aria-label="pinterest" class="d-center rounded-circle cus-border border b-sixteen transition">
-                                <span class="d-center transition fs-five">
-                                    <i class="ph ph-pinterest-logo"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.twitch.com" aria-label="twitch" class="d-center rounded-circle cus-border border b-sixteen transition">
-                                <span class="d-center transition fs-five">
-                                    <i class="ph ph-twitch-logo"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com" aria-label="transition" class="d-center rounded-circle cus-border border b-sixteen transition">
-                                <span class="d-center transition fs-five">
-                                    <i class="ph ph-linkedin-logo"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-6 col-sm-3 col-lg-2 col-xl-2 footer-links">
-                    <div class="single-box">
-                        <h5 class="mb-3 mb-sm-4 slide-horizontal" data-splitting>Quick Link</h5>
-                        <ul class="d-grid gap-2 gap-sm-3">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="coupon-style.html">Browse Coupons</a></li>
-                            <li><a href="stores-style-2.html">Stores</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-lg-2 col-xl-2 footer-links">
-                    <div class="single-box">
-                        <h5 class="mb-3 mb-sm-4 slide-horizontal" data-splitting>Categories</h5>
-                        <ul class="d-grid gap-2 gap-sm-3">
-                            <li><a href="coupon-style.html">Accessories</a></li>
-                            <li><a href="coupon-style.html">Beauty</a></li>
-                            <li><a href="coupon-style.html">Clothing</a></li>
-                            <li><a href="coupon-style.html">Electronics</a></li>
-                            <li><a href="coupon-style.html">Food</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-3 col-lg-2 col-xl-2 footer-links">
-                    <div class="single-box">
-                        <h5 class="mb-3 mb-sm-4 slide-horizontal" data-splitting>More</h5>
-                        <ul class="d-grid gap-2 gap-sm-3">
-                            <li><a href="coupon-style.html">Furniture</a></li>
-                            <li><a href="coupon-style.html">Home & Garden</a></li>
-                            <li><a href="coupon-style.html">Jewelry</a></li>
-                            <li><a href="coupon-style.html">Medical</a></li>
-                            <li><a href="coupon-style.html">Travel</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-5 col-lg-4 col-xl-3 footer-links">
-                    <div class="single-box">
-                        <h5 class="mb-3 mb-sm-4 slide-horizontal" data-splitting>Contact</h5>
-                        <ul class="d-grid gap-3 gap-md-6">
-                            <li class="d-flex align-items-center gap-3">
-                                <span class="icon-area box-three fs-four p2-color d-center rounded-circle cus-border border b-sixteen">
-                                    <i class="ph ph-phone-call"></i>
-                                </span>
-                                <div class="d-grid">
-                                    <span class="fs-seven transition n17-color">(505) 555-0125</span>
-                                    <span class="fs-seven transition n17-color">(406) 555-0120</span>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-3">
-                                <span class="icon-area box-three fs-four p2-color d-center rounded-circle cus-border border b-sixteen">
-                                    <i class="ph ph-envelope-open"></i>
-                                </span>
-                                <div class="d-grid">
-                                    <span class="fs-seven transition n17-color">info@couponly.com</span>
-                                    <span class="fs-seven transition n17-color">demo@couponly.com</span>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-3">
-                                <span class="icon-area box-three fs-four p2-color d-center rounded-circle cus-border border b-sixteen">
-                                    <i class="ph ph-map-pin-line"></i>
-                                </span>
-                                <div class="d-grid">
-                                    <span class="fs-seven transition n17-color">2118 Thornridge Cir. Syracuse, Connecticut</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row py-5 py-md-8 gy-5 gy-xl-0 justify-content-between cus-border border-top b-eighth">
-                <div class="col-lg-7 col-md-6 order-1 order-md-0">
-                    <div class="copyright text-center text-md-start">
-                        <p class="fw-mid">Copyright ©<span class="currentYear"></span> <a href="index.html" class="s1-color fw-mid">Couponly.</a> All rights reserved</p>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    <div class="d-flex flex-wrap gap-3 gap-md-5 align-items-center justify-content-center justify-content-xl-end">
-                        <a href="terms-conditions.html">Help & Support</a>
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <a href="terms-conditions.html">Terms Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Area End --> {% endcomment %}
 
     <!-- ==== js dependencies start ==== -->
     <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <script src="{% static 'js/plugins/plugin-custom.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+    {% block import_js %}
+    {% endblock import_js %}
 
 </body>
 

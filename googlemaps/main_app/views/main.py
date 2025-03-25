@@ -15,7 +15,17 @@ def categoty_list_place(request, category_name):
         "category_name": category_name,
         "places": places
     }
-    return render(request, 'categoty_list_place.html', context)
+    return render(request, 'categoty_list_place_def.html', context)
+
+def categoty_list_place_task_manager(request, category_name):
+    category_obj = Category.objects.get(name=category_name)
+    places = Place.objects.filter(category=category_obj)
+
+    context = {
+        "category_name": category_name,
+        "places": places
+    }
+    return render(request, 'categoty_list_place_task_manager.html', context)
 
 def place_full_info(request, name_slug):
     place_obj = Place.objects.get(slug=name_slug)

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator, RegexValidator
 
-from .countries import City
+from .countries import City, State
 from .categories import Category
 
 from django.utils.text import slugify

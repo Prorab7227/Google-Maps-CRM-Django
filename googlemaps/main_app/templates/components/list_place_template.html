@@ -1,0 +1,49 @@
+<table class="table tasks-list">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Reviews</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Place Type</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Clear Website</th>
+            <th>Link</th>
+            <th>Status</th>
+            <th class="text-center text-muted" style="width: 30px;"><i class="ph-check"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for item in places %}
+            <tr>
+                <td>{{ item.name|default:"-" }}</td>
+                <td>{{ item.rating|default:"-" }}</td>
+                <td>{{ item.num_reviews|default:"-" }}</td>
+                <td class="text-break">{{ item.city.country }}</td>
+                <td>{{ item.city.state }}</td>
+                <td>{{ item.city }}</td>
+                <td>{{ item.place_type|default:"-" }}</td>
+                <td>{{ item.phone|default:"-" }}</td>
+                <td class="text-break">{{ item.email|default:"-" }}</td>
+                <td>
+                    <a href="{{item.clear_website}}">{{ item.clear_website|default:"-"|truncatechars:10 }}</a>
+                </td>
+                <td>
+                    <a href="{{item.link}}" target="_blank">{{ item.link|default:"-"|truncatechars:20 }}</a>
+                </td>
+                <td>{{ item.status }}</td>
+                <td class="text-center">
+                    <a href="{% url 'place_full_info' item.slug %}" class="btn btn-primary">
+                        <span>
+                            <i class="ph ph-share-network"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_content %}
+<!-- Section Sidebar start-->
+<section class="section-sidebar">
+    <div class="row">
+        <div class="col-xxl-12 cus-z1">
+            <div class="d-center justify-content-between gap-3 flex-wrap mb-5 mb-md-8 p1-2nd-bg-color cus-border border b-ninth px-4 px-md-6 py-3 py-md-4 rounded-4">
+                <p class="n15-color fs-seven">{{places.count}} Results</p>
+                <div class="end-area d-center gap-4 gap-md-7">
+                    <div class="filter-btn">
+                        <button class="box-style box-second first-alt right-sidebar-btn gap-2 gap-md-2 rounded-pill py-2 py-md-3 px-3 px-md-5 d-center w-100 bg-transparent">
+                            <span class="d-center fs-five n17-color">
+                                <i class="ph ph-faders-horizontal"></i>
+                            </span>
+                            <span class="fs-six text-nowrap fw-mid transition">Filter</span>
+                        </button>
+                    </div>
+                    <div class="sort-by d-center gap-2 gap-md-3">
+                        <span class="n15-color d-none d-sm-flex">Sort By :</span>
+                        <div class="input-area n1-bg-color rounded-pill cus-border border b-seventh transition">
+                            <div class="w-auto single-select w-100 position-relative px-4 px-md-6 py-3 py-md-3">
+                                <select class="select-two">
+                                    <option value="0">Newest</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                    <option value="4">Option 4</option>
+                                    <option value="5">Option 5</option>
+                                    <option value="6">Option 6</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-stores second">
+                <div class="row justify-content-center justify-content-sm-start cus-row g-3">
+                    {% for item in places %}
+                        <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                            <div class="single-box transition d-grid gap-4 gap-md-6 p1-2nd-bg-color cus-border border b-eighth p-4 p-md-6 rounded-3">
+                                <div class="d-center justify-content-between gap-3 gap-md-5">
+                                    <div class="d-center justify-content-between gap-3 gap-md-4">
+                                        <div class="d-grid gap-2">
+                                            <h5 class="n15-color">{{item.name}}</h5>
+                                            <div class="d-center justify-content-start gap-1">
+                                                <span class="d-center fs-six f5-color">
+                                                    <i class="ph ph-map-pin-line"></i>
+                                                </span>
+                                                <span class="n15-color fs-seven">{{item.city}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'place_full_info' item.slug %}">
+                                        <span class="d-center fs-four f11-color rounded-2 s1-4th-bg-color cus-border border b-sixth icon-area box-two">
+                                            <i class="ph ph-share-network"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="bottom-area d-grid gap-3 gap-md-4">
+                                    <p class="fs-six n17-color fw-mid">{{item.full_address}}</p>
+                                    <div class="d-center justify-content-start gap-2">
+                                        <span class="d-center fs-four f5-color">
+                                            <i class="ph ph-link-simple"></i>
+                                        </span>
+                                        {% if item.clear_website %}
+                                            <a href="https://{{item.clear_website}}" target="_blank">
+                                                <span class="n15-color fs-seven fw-mid">{{item.clear_website}}</span>
+                                            </a>
+                                        {% else %}
+                                            <span class="n15-color fs-seven fw-mid">-</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        No data
+                    {% endfor %}
+                </div>
+                <div class="d-center">
+                    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4 mt-md-8">
+                        <ul class="pagination gap-2 gap-md-3 justify-content-center align-items-center">
+                            <li class="page-item">
+                                <a class="page-link rounded-circle transition d-center previous" href="javascript:void(0)" aria-label="Previous">
+                                    <span class="d-center bg-transparent fs-five">
+                                        <i class="ph ph-caret-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">1</a></li>
+                            <li class="page-item active"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">3</a></li>
+                            <li class="page-item"><a class="page-link rounded-circle transition d-center" href="javascript:void(0)">...</a></li>
+                            <li class="page-item">
+                                <a class="page-link rounded-circle transition d-center next" href="javascript:void(0)" aria-label="Next">
+                                    <span class="d-center bg-transparent fs-five">
+                                        <i class="ph ph-caret-right"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Sidebar end -->
+{% endblock main_content %}
+
+
+{% block import_js %}
+    <script src="{% static 'js/index_js/task_manager_list.js' %}"></script>    
+    <script src="{% static 'js/index_js/datatables.min.js' %} "></script>
+    <script src="{% static 'js/index_js/natural_sort.js' %}"></script>
+{% endblock import_js %}
