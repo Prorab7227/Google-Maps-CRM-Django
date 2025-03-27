@@ -1,6 +1,7 @@
 <table class="table tasks-list">
     <thead>
         <tr>
+            <th>Category</th>
             <th>Name</th>
             <th>Rating</th>
             <th>Reviews</th>
@@ -10,16 +11,14 @@
             <th>Place Type</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Clear Website</th>
-            <th>Link</th>
-            <th>Status</th>
+            <th>Website</th>
             <th class="text-center text-muted" style="width: 30px;"><i class="ph-check"></i></th>
         </tr>
     </thead>
     <tbody>
-
         {% for item in places %}
             <tr>
+                <td>{{ item.category }}</td>
                 <td>{{ item.name|default:"-" }}</td>
                 <td>{{ item.rating|default:"-" }}</td>
                 <td>{{ item.num_reviews|default:"-" }}</td>
@@ -27,15 +26,35 @@
                 <td>{{ item.city.state }}</td>
                 <td>{{ item.city }}</td>
                 <td>{{ item.place_type|default:"-" }}</td>
-                <td>{{ item.phone|default:"-" }}</td>
-                <td class="text-break">{{ item.email|default:"-" }}</td>
-                <td>
-                    <a href="{{item.clear_website}}">{{ item.clear_website|default:"-"|truncatechars:10 }}</a>
+                <td class="text-center">
+                    {% if item.phone %}
+                        <div class="text-success bg-success bg-opacity-25">
+                            <i class="ph ph-phone"></i>
+                        </div>
+                    {% else %}
+                        <div class="text-danger bg-danger bg-opacity-25">
+                            <i class="ph ph-x"></i>
+                        </div>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if item.email %}
+                        <div class="text-success bg-success bg-opacity-25">
+                            <i class="ph ph-envelope"></i>
+                        </div>
+                    {% else %}
+                        <div class="text-danger bg-danger bg-opacity-25">
+                            <i class="ph ph-x"></i>
+                        </div>
+                    {% endif %}
                 </td>
                 <td>
-                    <a href="{{item.link}}" target="_blank">{{ item.link|default:"-"|truncatechars:20 }}</a>
+                    {% if item.website %}
+                        <a href="{{ item.website }}">{{ item.website|default:"-"|truncatechars:10 }}</a>
+                    {% else %}
+                        -
+                    {% endif %}
                 </td>
-                <td>{{ item.status }}</td>
                 <td class="text-center">
                     <a href="{% url 'place_full_info' item.slug %}" class="btn btn-primary">
                         <span>
@@ -44,6 +63,43 @@
                     </a>
                 </td>
             </tr>
+        {% empty %}
+            <tr>
+                <td colspan="12" class="text-center">No places available</td>
+            </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<!-- Пагинация -->
+<nav>
+    <ul class="pagination" id="pagination">
+        {% if places.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ places.previous_page_number }}">Previous</a>
+            </li>
+        {% endif %}
+        
+        {% with start=places.number|add:"-3" end=places.number|add:"3" %}
+            {% for i in places.paginator.page_range %}
+                {% if i >= start and i <= end %}
+                    <li class="page-item {% if places.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+        
+        {% if places.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ places.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ places.paginator.num_pages }}">Last</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

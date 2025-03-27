@@ -27,15 +27,15 @@
     <div class="p-4 p-lg-8 cus-border border b-seventh rounded-2">
         <div class="row cus-row categories-style gy-5 gy-md-8 d-flex d-xxl-grid">
             {% for item in categories %}
-                <div class="col-6 col-sm-6 col-md-4 col-xl-3 single-box transition d-center justify-content-start gap-3 gap-md-4">
-                    <div class="d-center icon-area box-four rounded-circle">
-                        <img class="max-un" src="{% static '' %}images/icon/categories-style-icon-25.png" alt="Image"> 
-                    </div>
-                    <div class="text-area">
-                        <span class="n17-color fs-six fw-mid title">{{item}}</span><br>
-                        <a href="{% url 'categoty_list_place' item %}">Cards</a><br>
-                        <a href="{% url 'categoty_list_place_task_manager' item %}">Task Manager</a>
-                    </div>
+                <div class="col-6 col-sm-6 col-md-4 col-xl-3">
+                    <a href="{% url 'categoty_list_place_tm' %}?category_name={{item.slug}}" class="single-box transition d-center justify-content-start gap-3 gap-md-4">
+                        <div class="d-center icon-area box-four rounded-circle">
+                            <img class="max-un" src="{% static '' %}images/icon/categories-style-icon-25.png" alt="Image"> 
+                        </div>
+                        <div class="text-area">
+                            <span class="n17-color fs-six fw-mid title">{{item}} ({{item.places.count}})</span>
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

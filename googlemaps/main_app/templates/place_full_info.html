@@ -902,7 +902,7 @@
                                             </div>
                                             <div class="d-center position-relative gap-2 gap-md-3 my-3 my-md-5 flex-wrap flex-xl-nowrap">
                                                 <span class="f5-color fw-mid rounded-pill s1-4th-bg-color w-100 cus-border border b-sixth p-2 d-flex gap-2 gap-md-3">
-                                                    <span class="d-center icon-area box-two rounded-circle s1-bg-color n1-color fs-six">{{place_obj.rating}}</span>
+                                                    <span class="d-center icon-area box-two rounded-circle s1-bg-color n1-color fs-six">{{place_obj.rating|default:"0"}}</span>
                                                     <span class="right-area d-grid gap-1">
                                                         <span class="star-area d-flex gap-1 mb-1">
                                                             <a href="javascript:void(0)">
@@ -931,7 +931,7 @@
                                                                 </span>
                                                             </a>
                                                         </span>
-                                                        <span class="n15-color fs-nine fw-mid">{{place_obj.num_reviews}} Reviews</span>
+                                                        <span class="n15-color fs-nine fw-mid">{{place_obj.num_reviews|default:"0"}} Reviews</span>
                                                     </span>
                                                 </span>
                                                 <span class="v-line d-center d-none d-xl-flex f-height third h-100"></span>

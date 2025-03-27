@@ -238,7 +238,7 @@
 			</div>
 
 			<ul class="nav flex-row justify-content-end order-1 order-lg-2">
-				{% if request.user.is_superuser %}
+				{% comment %} {% if request.user.is_superuser %}
 					<li class="nav-item ms-lg-2">
 						<a href="{% url 'moderate_comments' %}" class="navbar-nav-link navbar-nav-link-icon rounded-pill">
 							<i class="ph-ticket"></i>
@@ -293,7 +293,7 @@
 						// Запускаем обновление каждую минуту
 						setInterval(updateModerateComments, 30000);
 					</script>
-				{% endif %}
+				{% endif %} {% endcomment %}
 				
 				{% comment %} <li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
 					<a href="{% url 'all_comments' %}" class="navbar-nav-link navbar-nav-link-icon rounded-pill">
@@ -670,9 +670,8 @@
 				<!-- Content area -->
 				<div class="content">
 
-                    <div class="card">
-                        {% include "components/list_place_template.html" with places=places %}
-                    </div>
+                    {% block content_area %}
+                    {% endblock content_area %}
 
 				</div>
 				<!-- /content area -->
@@ -801,7 +800,5 @@
     <script src="{% static 'task_manager/js/index_js/jquery.min.js' %}"></script>
 	<script src="{% static 'task_manager/js/dashboard/dashboard.js' %}"></script>
 
-	<script src="{% static 'task_manager/js/index_js/task_manager_list.js' %}"></script>    
-    <script src="{% static 'task_manager/js/index_js/datatables.min.js' %} "></script>
-    <script src="{% static 'task_manager/js/index_js/natural_sort.js' %}"></script>
+    {% block import_js %}{% endblock import_js %}
 </body>

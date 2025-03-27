@@ -53,8 +53,10 @@ var TaskManagerList = function () {
 
         // Initialize data table
         $('.tasks-list').DataTable({
+            processing: true,    // Показывает индикатор загрузки
             autoWidth: false,
-            deferRender: true,
+            paging: false,
+
             columnDefs: [
                 {
                     orderable: false,
@@ -64,30 +66,13 @@ var TaskManagerList = function () {
             ],
             dom: '<"datatable-header"fl><"datatable-scroll-lg"t><"datatable-footer"ip>',
             language: {
-                search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
-                searchPlaceholder: 'Type to filter...',
+                search: '<span class="me-3">Search:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                searchPlaceholder: 'Type to search...',
                 lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                 paginate: { 'first': 'First', 'last': 'Last', 'next': document.dir == "rtl" ? '&larr;' : '&rarr;', 'previous': document.dir == "rtl" ? '&rarr;' : '&larr;' }
             },
             lengthMenu: [15, 25, 50, 75, 100],
             displayLength: 50,
-
-            // drawCallback: function (settings) {
-            //     var api = this.api();
-            //     var rows = api.rows({page:'current'}).nodes();
-            //     var last=null;
-     
-            //     // Grouod rows
-            //     api.column(1, {page:'current'}).data().each(function (group, i) {
-            //         if (last !== group) {
-            //             $(rows).eq(i).before(
-            //                 '<tr class="table-light"><td colspan="12" class="fw-semibold">'+group+'</td></tr>'
-            //             );
-     
-            //             last = group;
-            //         }
-            //     });
-            // }
         });
     };
 

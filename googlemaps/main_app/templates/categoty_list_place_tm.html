@@ -1,0 +1,16 @@
+{% extends "base_tm.html" %}
+{% load static %}
+
+
+{% block content_area %}
+	<div class="card">
+		{% include "components/list_place_template.html" with places=places %}
+	</div>
+{% endblock content_area %}
+
+
+{% block import_js %}
+	<script src="{% static 'task_manager/js/index_js/task_manager_list.js' %}"></script>    
+    <script src="{% static 'task_manager/js/index_js/datatables.min.js' %} "></script>
+    <script src="{% static 'task_manager/js/index_js/natural_sort.js' %}"></script>
+{% endblock import_js %}
